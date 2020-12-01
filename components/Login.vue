@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { mapAction } from "vuex";
 export default {
   data: () => ({
     username: "",
