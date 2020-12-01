@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "nuxtphotobookef74742f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

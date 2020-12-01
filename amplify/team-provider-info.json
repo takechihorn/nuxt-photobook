@@ -1,0 +1,19 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nuxtphotobook-dev-230517-authRole",
+      "UnauthRoleArn": "arn:aws:iam::213330998827:role/amplify-nuxtphotobook-dev-230517-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::213330998827:role/amplify-nuxtphotobook-dev-230517-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-nuxtphotobook-dev-230517-deployment",
+      "UnauthRoleName": "amplify-nuxtphotobook-dev-230517-unauthRole",
+      "StackName": "amplify-nuxtphotobook-dev-230517",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:213330998827:stack/amplify-nuxtphotobook-dev-230517/232cf210-3315-11eb-a79d-0edf7d8ef1f4"
+    },
+    "categories": {
+      "auth": {
+        "nuxtphotobookef74742f": {}
+      }
+    }
+  }
+}
