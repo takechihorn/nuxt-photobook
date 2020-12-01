@@ -41,11 +41,15 @@
 export default {
   methods: {
     async logout() {
-      await this.$store.dispatch("auth/auth/logout");
+      await this.$store.dispatch("auth/logout");
       this.$router.push("/");
     }
   },
-  computed: {}
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  }
 };
 </script>
 

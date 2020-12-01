@@ -2,90 +2,65 @@ import {
   Auth
 } from "aws-amplify";
 
-export const state = {
+export const state = () => {
+  isAuthenticated: false
   user: null
 }
 
 export const mutations = {
-  setUser(state, payload) {
-    state.user = payload;
+  set(state, user) {
+    state.isAuthenticated = !!user
+    state.user = user;
   }
 }
 
 export const actions = {
+  async load({
+    commit
+  }) {
+    try {
+      const user = await Auth.currentAuthenticatedUser()
+      commit('')
+    } catch (error) {
+      commit('set', null)
+    }
+  },
+  async register(_, {
+    email,
+    password
+  }) {
+    const user = await Auth.signUp({
+      username: email,
+      password
+    })
+    return user
+  },
+  async confirmRegistration(_, {
+    email,
+    code
+  }) {
+    return await Auth.confirmSignUp(email, code)
+  },
+  async login({
+    commit
+  }, {
+    email,
+    password
+  }) {
+    const user = await Auth.signIn(email, password)
+    commit('set', user)
+    return user
+  },
   async logout({
     commit
   }) {
-    await Auth.signOut();
-    commit("setUser", null);
-  },
-  async login({
-    commit,
-    dispatch
-  }, {
-    username,
-    password
-  }) {
-    try {
-      await Auth.signIn({
-        username,
-        password
-      });
-
-      const userInfo = await Auth.currentUserInfo();
-      commit("setUser", userInfo);
-      return Promise.resolve("Success");
-
-
-    } catch (error) {
-      console.log(error);
-      return Promise.reject(error);
-    }
-  },
-  async confirmSignUp(_, {
-    username,
-    code
-  }) {
-    try {
-      await Auth.confirmSignUp(username, code);
-      return Promise.resolve();
-
-    } catch (error) {
-      console.log(error);
-      return Promise.reject(error);
-
-    }
-  },
-  async signUp(_, {
-    username,
-    password,
-    email
-  }) {
-    try {
-      await Auth.signUp({
-        username,
-        password,
-        attributes: {
-          email
-        }
-      })
-      return Promise.resolve();
-
-    } catch (error) {
-      console.log(error);
-      return Promise.reject();
-
-    }
-  },
-  async authAction({
-    commit
-  }) {
-    const userInfo = await Auth.currentUserInfo();
-    commit("setUser", userInfo);
-
+    await Auth.signOut()
+    commit('set', null)
   }
-}
 
-export const getters = {
-  user: (state) => state.user
+
+
+
+
+
 }
