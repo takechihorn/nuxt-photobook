@@ -10,7 +10,8 @@ export default {
   name: "Home",
   components: {
     Login
-  }
+  },
+  middleware: "auth"
 };
 </script>
 

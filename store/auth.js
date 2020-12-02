@@ -16,11 +16,18 @@ export const mutations = {
 
 export const actions = {
   async load({
-    commit
+    commit,
+    dispatch
   }) {
     try {
       const user = await Auth.currentAuthenticatedUser()
-      commit('')
+      commit('set'.user)
+      if (user) {
+        await dispatch('user/getUser', user.username, {
+          root: true
+        })
+      }
+      return user
     } catch (error) {
       commit('set', null)
     }
@@ -57,10 +64,4 @@ export const actions = {
     await Auth.signOut()
     commit('set', null)
   }
-
-
-
-
-
-
 }

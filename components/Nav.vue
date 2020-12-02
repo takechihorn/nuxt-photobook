@@ -2,16 +2,16 @@
   <div>
     <ul class="flex justify-end">
       <li class="mr-6" v-if="!user">
-        <NuxtLink to="/">
+        <nuxt-link to="/">
           <a class="text-blue-500 hover:text-blue-800 cursor-pointer">Login</a>
-        </NuxtLink>
+        </nuxt-link>
       </li>
       <li class="mr-6" v-if="!user">
-        <NuxtLink to="/signup">
+        <nuxt-link to="/register">
           <a class="text-blue-500 hover:text-blue-800 cursor-pointer"
             >Sign Up</a
           >
-        </NuxtLink>
+        </nuxt-link>
       </li>
       <li class="mr-6" v-if="user">
         <div class="font-semibold text-black-500">
@@ -19,11 +19,11 @@
         </div>
       </li>
       <li class="mr-6" v-if="user">
-        <NuxtLink to="/albums">
+        <nuxt-link to="/albums">
           <div class="text-blue-500 hover:text-blue-800 cursor-pointer">
             Albums
           </div>
-        </NuxtLink>
+        </nuxt-link>
       </li>
       <li class="mr-6" v-if="user">
         <div
